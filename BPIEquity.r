@@ -11,9 +11,10 @@ getdate <-function(x,y){
  ##start reading
  downloadfile<-getURL(baseURL)  #download URL since it is under https
  mem<-read.csv(text=downloadfile)  #store to mem
- datalines <- grep("NAVpUGridView_Label",mem[,1],value=TRUE)
-  return (datalines)
+ datalines <- grep("NAVpUGridView_Label",mem[,1],value=TRUE)   #search relevant data
+ extract <- gsub(".*>(.*)<.*",'\\1',datalines)  #extract values as string
+  return (extract)
 }
 
-
+#<span id=NAVpUGridView_Label4_9>08/10/2015</span>"   .*>(.*)<.*
 ##URL2<-htmlTreeParse(URL1)
