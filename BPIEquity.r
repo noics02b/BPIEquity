@@ -13,7 +13,8 @@ getdate <-function(x,y){
  mem<-read.csv(text=downloadfile)  #store to mem
  datalines <- grep("NAVpUGridView_Label",mem[,1],value=TRUE)   #search relevant data
  extract <- gsub(".*>(.*)<.*",'\\1',datalines)  #extract values as string
-  return (extract)
+ table <- matrix(extract, ncol=4, byrow=TRUE)  #reformat using matrix
+  return (table)
 }
 
 #<span id=NAVpUGridView_Label4_9>08/10/2015</span>"   .*>(.*)<.*
